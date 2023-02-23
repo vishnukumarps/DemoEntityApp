@@ -34,6 +34,9 @@ namespace DemoEntityApp.Controllers
             List<Student> studentList= demoDbContext.Students.ToList();
 
 
+
+
+            
             return studentList;
 
         }
