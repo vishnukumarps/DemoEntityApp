@@ -13,7 +13,7 @@ public class DemoDbContext : DbContext
     {
 
 
-        var path = "Server=localhost\\SQLEXPRESS;Database=ZDB_TEST1;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true";
+        var path = "Server=localhost\\SQLEXPRESS;Database=ZDB_TEST2;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true";
 
         optionsBuilder.UseSqlServer(path);
         base.OnConfiguring(optionsBuilder);
