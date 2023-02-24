@@ -1,3 +1,7 @@
+using DemoEntityApp.DbContext2;
+using DemoEntityApp.Helper;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<HelperClass>();// new Obj
+
+//builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(
+//    builder.Configuration.GetConnectionString("Default")
+//    ));
 
 var app = builder.Build();
 

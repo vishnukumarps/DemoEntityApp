@@ -1,4 +1,5 @@
 ﻿using DemoEntityApp.DbContext2;
+using DemoEntityApp.Helper;
 using DemoEntityApp.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,34 +10,58 @@ namespace DemoEntityApp.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        [HttpPost]
+      
+        HelperClass _helper;
+        DemoDbContext demoDbContext;
+        public StudentController(HelperClass helper
+           // , DemoDbContext demoDbContext
+            )
+        {
+           
+         
+           demoDbContext= new DemoDbContext();
+            _helper = helper;
+        }
+
+
+        [HttpPost("SayHai")]
         public string SayHai()
         {
-           return  "Hai";
+           
+           return  _helper.getOtp().ToString();
         }
 
         [HttpPost("AddStudent")]
         public void AddStudent(Student studentObj)
         {
 
-            DemoDbContext demoDbContext = new DemoDbContext();
+    
 
             demoDbContext.Students.Add(studentObj);
             demoDbContext.SaveChanges();
 
+           
+           
         }
 
         [HttpGet("GetAllStudents")]
         public List<Student> GetAllStudents()
         {
 
-            DemoDbContext demoDbContext = new DemoDbContext();
+        
             List<Student> studentList= demoDbContext.Students.ToList();
-
-
-
-
             
+            return studentList;
+
+        }
+
+
+        [HttpGet("GetAllStudents2")]
+        public List<Student> GetAllStudents2()
+        {
+
+            List<Student> studentList = demoDbContext.Students.ToList();
+
             return studentList;
 
         }
