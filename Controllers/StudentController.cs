@@ -24,7 +24,7 @@ namespace DemoEntityApp.Controllers
         }
 
 
-        [HttpPost("SayHai")]
+        [HttpPost("Sayhello")]
         public string SayHai()
         {
            
