@@ -1,5 +1,7 @@
 using DemoEntityApp.DbContext2;
 using DemoEntityApp.Helper;
+using DemoEntityApp.Services;
+using DemoEntityApp.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +12,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<HelperClass>();// new Obj
+builder.Services.AddTransient<IStudentService,StudentService>();// new Obj
 
-//builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(
-//    builder.Configuration.GetConnectionString("Default")
-//    ));
+builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("name")
+    ));
 
 var app = builder.Build();
 
