@@ -1,5 +1,6 @@
 ﻿using DemoEntityApp.DbContext2;
 using DemoEntityApp.Model;
+using DemoEntityApp.Service.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,20 +10,26 @@ namespace DemoEntityApp.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+      private readonly  IStudentService _studentService;
+        public StudentController(IStudentService studentService )
+        {
+           _studentService= studentService;
+        }
         [HttpPost]
         public string SayHai()
         {
-           return  "Hai";
+            return "Hai";
         }
 
         [HttpPost("AddStudent")]
         public void AddStudent(Student studentObj)
         {
+            _studentService.Add(studentObj);
 
-            DemoDbContext demoDbContext = new DemoDbContext();
 
-            demoDbContext.Students.Add(studentObj);
-            demoDbContext.SaveChanges();
+
+
+
 
         }
 

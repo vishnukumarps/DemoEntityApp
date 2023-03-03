@@ -9,6 +9,7 @@ public class DemoDbContext : DbContext
 
     public DbSet<Student> Students { get; set; }
     public DbSet<Address> Address { get; set; }
+    public DbSet<Teacher> Teachers { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
@@ -18,7 +19,6 @@ public class DemoDbContext : DbContext
         optionsBuilder.UseSqlServer(path);
         base.OnConfiguring(optionsBuilder);
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
