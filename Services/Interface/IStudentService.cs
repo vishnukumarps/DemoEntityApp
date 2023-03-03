@@ -7,7 +7,7 @@ namespace DemoEntityApp.Services.Interface
     {
 
         public void AddStudent(StudentDto newStudent);
-        public List<Student> GetAllStudents();
+        public List<StudentDto> GetAllStudents();
 
         public StudentDto GetStudnet(int id);
 

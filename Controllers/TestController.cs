@@ -37,6 +37,14 @@ namespace DemoEntityApp.Controllers
             return Ok(studentDto);
         }
 
+        [HttpGet("GetStudnets")]
+        public ActionResult GetStudnets()
+        {
+            List<StudentDto> studentDtos = _studentService.GetAllStudents();
+
+            return Ok(studentDtos);
+        }
+
 
     }
 }
