@@ -1,4 +1,5 @@
 ﻿using DemoEntityApp.DbContext2;
+using DemoEntityApp.Helper;
 using DemoEntityApp.Model;
 using DemoEntityApp.Service.Interface;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace DemoEntityApp.Controllers
         [HttpPost]
         public string SayHai()
         {
-            return "Hai";
+           return  "Hai";
         }
 
         [HttpPost("AddStudent")]
@@ -29,17 +30,30 @@ namespace DemoEntityApp.Controllers
 
 
 
+            DemoDbContext demoDbContext = new DemoDbContext();
 
 
+           
+           
         }
 
         [HttpGet("GetAllStudents")]
         public List<Student> GetAllStudents()
         {
 
-            DemoDbContext demoDbContext = new DemoDbContext();
+        
             List<Student> studentList= demoDbContext.Students.ToList();
+            
+            return studentList;
 
+        }
+
+
+        [HttpGet("GetAllStudents2")]
+        public List<Student> GetAllStudents2()
+        {
+
+            List<Student> studentList = demoDbContext.Students.ToList();
 
             return studentList;
 
