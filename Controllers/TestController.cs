@@ -1,4 +1,5 @@
 ﻿using DemoEntityApp.DbContext2;
+using DemoEntityApp.DTO;
 using DemoEntityApp.Helper;
 using DemoEntityApp.Model;
 using DemoEntityApp.Services.Interface;
@@ -21,13 +22,21 @@ namespace DemoEntityApp.Controllers
         }
 
         [HttpPost("AddStudent")]
-        public ActionResult AddStudent(Student studnet) 
+        public ActionResult AddStudent(StudentDto studnetDto) 
         {
-            _studentService.AddStudent(studnet);
+          _studentService.AddStudent(studnetDto);
 
             return null;
         }
 
-      
+        [HttpGet("GetStudnet")]
+        public ActionResult GetStudnet(int id)
+        {
+           StudentDto studentDto= _studentService.GetStudnet(id);
+
+            return Ok(studentDto);
+        }
+
+
     }
 }
